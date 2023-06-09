@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="author" content="N/A">
+        <meta name="description" content="Flea circus idle clicker game.">
+        <meta http-equiv="imagetoolbar" content="no" />
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <link rel="stylesheet" type="text/css" href="./header.css">
+        <title>Flea Circus</title>
+    </head>
+    <body>
+        <div class="container">
+            <header class="head">
+                <h1></h1>
+                <span class="header inner">
+                    <nav class="menu">
+                        <ul class="header-inner">
+                            <li>Paper</li>
+                            <li>Achievements</li>
+                            <li>Settings</li>
+                        </ul>
+                    </nav>
+                </span>
+            </header>
+        <div id="TopLine"><hr class="styleTopBar"></div>
+        <div id="watch" class="watch">
+            <img id="face" draggable="false" oncontextmenu="return false" src="images/watch.png">
+            <div id="minute-hand" class="hand"></div>
+            <div id="hour-hand" class="hand hour-hand"></div>
+            <div id="axis" class="axis"></div>
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const minuteHand = document.getElementById('minute-hand');
+            const hourHand = document.getElementById('hour-hand');
+            const cogSmall = document.getElementById('cog-small');
+            let minuteDeg = 0; //Keeps track of the current rotation angle for the minute hand
+            let hourDeg = 0; //Keeps track of the current rotation angle for the hour hand
+            let clickCount = 0; //Keeps track of number of clicks
+            let cogDeg = 0;
+
+            document.getElementById('watch').addEventListener('click', function() {
+                minuteDeg += 10; //Increase the angle of the minute hand by 10 degrees each click
+                hourDeg += 1; //Increase the angle of the hour hand by 1 degree each click
+                clickCount++; //Increments the click count
+                cogDeg += 2;
+
+                if (clickCount % 3 === 0) {
+                    clickSound.play();
+                }
+
+                minuteHand.style.transform = `translate(-50%, 0%) rotate(${minuteDeg}deg)`;
+                hourHand.style.transform = `translate(-50%, 0%) rotate(${hourDeg}deg)`;
+                
+            });
+         });
+        </script>
+    </body>
+</html>
